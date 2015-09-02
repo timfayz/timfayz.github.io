@@ -1,0 +1,309 @@
+// =======================================================================
+// Init
+// =======================================================================
+@import "elementcss/_";
+
+$line: calc-line(22px, 8px);
+$m: (
+  default: null,
+  flat:  '@media screen and (max-height: 370px)',
+  mobile:  '@media screen and (max-width: 375px)',
+  tablet:  '@media screen and (max-width: 740px)',
+);
+
+@include font-face(Exo, "../fonts/exo2-light", eot ttf woff woff2);
+
+html {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-width: 320px;
+  min-height: calc-line(38, 8px);
+  overflow: hidden;
+  line-height: ununit($line);
+  font-family: Exo, "Open Sans", OpenSans, sans-serif;
+}
+
+// =======================================================================
+// Sets
+// =======================================================================
+
+// Layout
+// =======================================================================
+$s: ();
+
+// Position
+// ---------
+$s: add($s, $Position, position (
+  relative, relative,
+  absolute, absolute,
+));
+
+// News
+// -----
+$news-set: (
+  0, 0,
+  auto, auto,
+);
+$s: add($s, $Top, top $news-set);
+$s: add($s, $Right, right $news-set);
+$s: add($s, $Bottom, bottom $news-set);
+$s: add($s, $Left, left $news-set);
+
+// Display
+// --------
+$s: add($s, $Display, display (
+  all: (prefix,
+    none, none,
+    block, block,
+    inline-block, inline-block,
+  ),
+), $m);
+
+// Overflow
+// ---------
+$s: add($s, $Overflow, overflow (
+  default: (
+    visible, visible,
+    hidden, hidden,
+  ),
+), $m);
+
+// Margin & Padding
+// -----------------
+$_xlg: xlg  calc-line(6);
+$_lg: lg  calc-line(4);
+$_md: md  calc-line(3);
+$_sm: sm  calc-line(2);
+$_xsm: xsm calc-line(1);
+$_xxsm: xxsm calc-line(0.5);
+
+$indent-set: (
+  nth($_lg, 1), nth($_lg, 2),
+  nth($_md, 1), nth($_md, 2),
+  nth($_sm, 1), nth($_sm, 2),
+  nth($_xsm, 1), nth($_xsm, 2),
+  nth($_xxsm, 1), nth($_xxsm, 2),
+);
+
+.mrg-auto { margin: auto; }
+$s: add($s, $Margin-top, margin-top $indent-set);
+$s: add($s, $Margin-bottom, margin-bottom $indent-set);
+
+$s: add($s, $Padding-top, padding-top $indent-set);
+$s: pass-add($s, $Padding-top, padding-top (
+  mobile: (prefix,
+    nth($_md, 1), nth($_md, 2),
+  ),
+), $m);
+$s: add($s, $Padding-bottom, padding-bottom $indent-set);
+
+// Width & Height
+// ---------------
+$s: add($s, wh, (width height) (
+  default: (
+    100, 100%,
+    img, calc-line(6, $line),
+  ),
+  mobile: (
+    img, calc-line(9, $line),
+  ),
+  flat: (
+    img, calc-line(21, 8px),
+  ),
+), $m);
+
+// Height
+// -------
+$s: add($s, $Height, height (
+  default: (
+    100, 100%,
+    line, calc-line(46, 8px),
+  ),
+  mobile: (
+    line, calc-line(54, 8px),
+  ),
+  flat: (
+    line, 100%,
+  ),
+), $m);
+
+// Width
+// ------
+$s: add($s, $Width, width (
+  100, 100%,
+));
+
+// Styling
+// =======================================================================
+
+// Opacity
+// --------
+.opc-0 {opacity: 0;}
+
+// Background
+// -----------
+$s: add($s, $Background, background (
+  default: (
+    akira, #fff url("../images/akira-blured-X1.jpg") center center/cover,
+    whitehi, rgba(255,255,255,0.97), //982
+    whitemi, rgba(255,255,255,0.6),
+  ),
+), $m);
+
+// Color
+// ------
+$s: add($s, $Color, color (
+  black, #111,
+  gray40, #222,
+  gray50, #555,
+  blue, dodgerblue,
+));
+
+// Text-shadow
+// ------------
+$s: add($s, $Text-shadow, text-shadow (
+  white, 0 1px 1px white,
+));
+
+// Cursor
+// -------
+$s: add($s, $Cursor, cursor (help, help));
+
+// Type
+// =======================================================================
+
+// Line-height
+// ------------
+$s: add($s, $Line-height, line-height (
+  md, calc-line(2.5em, $line),
+));
+
+// Font & Text
+// ------------
+$s: add($s, $Text-align, text-align (
+  center, center,
+));
+
+$s: add($s, $Font-weight, font-weight (
+  bold, bold,
+));
+
+$s: add($s, $Font-size, font-size (
+  default: (
+    base, 16px,
+    md, 2.4em,
+  ),
+  tablet: (
+    base, 0.8rem,
+  ),
+  mobile: (
+    base, 0.6rem,
+    md, 2.2em,
+  ),
+), $m);
+
+// Animation
+// =======================================================================
+
+// Animation
+// ----------
+$s: add($s, $Animation, animation (
+  opacify, opacify .3s ease-in forwards,
+  expand, expand .7s ease forwards,
+));
+
+$s: add($s, $Animation-delay, animation-delay (
+  x1, .5s,
+  x2, 1s,
+  x3, 1.3s,
+  x4, 1.6s,
+  x5, 1.9s,
+  x6, 2.4s,
+));
+
+// Transform
+// ----------
+.tf-scale {transform: scaleX(0);}
+
+// render all sets
+@include sets($s, $m);
+
+// =======================================================================
+// Keyframes
+// =======================================================================
+
+@keyframes top {
+  from  { top: -10%; }
+  to    { top: 0; }
+}
+
+@keyframes bottom {
+  from  { bottom: -10%; }
+  to    { bottom: 0; }
+}
+
+@keyframes opacify {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+@keyframes flash {
+  0% {transform: scale(13,13);}
+  100% {transform: scale(0.9,0.9);}
+}
+
+@keyframes expand {
+  from  { transform: scaleX(0); }
+  to    { transform: scaleX(1); }
+}
+
+// =======================================================================
+// Additions
+// =======================================================================
+
+._img {
+  border-radius: 50%;
+  background: rgba(0,0,0,0.1);
+  box-shadow: 0 0 1px 1px rgba(0,0,0,0.9);
+}
+
+._flash {
+  border: 1px solid rgba(0,0,0,1);
+  border-radius: 50%;
+  transform: scale(13,13);
+  animation: flash .5s ease-in 2.4s forwards, opacify .3s ease-in 1.9s forwards;
+}
+
+// tob & bottom black lines
+html:before, html:after {
+  z-index: 10;
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: calc-line(4);
+  background: #000;
+}
+html:before {
+  top: calc-line(-2, $line);
+  animation: top .7s ease 0s forwards;
+}
+html:after {
+  bottom: calc-line(-2, $line);
+  animation: bottom .7s ease 0s forwards;
+}
+@include media(flat, $m) {
+  html:before, html:after {
+    background: none;
+  }
+}
+@include media(mobile, $m) {
+  html:before, html:after {
+    height: calc-line(2);
+  }
+}
+
+._ruler {
+  //@include ruler(8px, rgba(0,0,0,0.1));
+}

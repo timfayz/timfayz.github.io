@@ -8,65 +8,18 @@
   font-weight: normal;
   font-style: normal;
   src: url('../fonts/exo2-light.eot'); src: url('../fonts/exo2-light.eot?#iefix') format('embedded-opentype'), url('../fonts/exo2-light.woff2') format('woff2'), url('../fonts/exo2-light.woff') format('woff'), url('../fonts/exo2-light.ttf') format('truetype'); }
-._ruler {
-  content: " ";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-image: -moz-linear-gradient(top, transparent 7px, rgba(0, 0, 0, 0.1) 8px);
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(7px, transparent), color-stop(8px, rgba(0, 0, 0, 0.1)));
-  background-image: -webkit-linear-gradient(top, transparent 7px, rgba(0, 0, 0, 0.1) 8px);
-  background-image: -o-linear-gradient(top, transparent 7px, rgba(0, 0, 0, 0.1) 8px);
-  background-image: linear-gradient(to bottom, transparent 7px, rgba(0, 0, 0, 0.1) 8px);
-  background-repeat: repeat-y;
-  background-position: 0 1px;
-  -webkit-background-size: 100% 8px;
-     -moz-background-size: 100% 8px;
-       -o-background-size: 100% 8px;
-          background-size: 100% 8px; }
-
 html {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  overflow: hidden;
-  font-size: 16px;
-  line-height: 1.5;
-  font-family: Exo, "Open Sans", OpenSans, sans-serif;
-  min-width: 320px;
-  min-height: 19rem; }
-
-html:before, html:after {
-  z-index: 10;
-  content: " ";
-  position: absolute;
-  left: 0;
   width: 100%;
-  height: 2rem;
-  background: #000; }
+  height: 100%;
+  min-width: 320px;
+  min-height: 19rem;
+  overflow: hidden;
+  line-height: 1.5;
+  font-family: Exo, "Open Sans", OpenSans, sans-serif; }
 
-html:before {
-  top: -3rem;
-  -webkit-animation: top .7s ease 0s forwards;
-     -moz-animation: top .7s ease 0s forwards;
-       -o-animation: top .7s ease 0s forwards;
-          animation: top .7s ease 0s forwards; }
-
-html:after {
-  bottom: -3rem;
-  -webkit-animation: bottom .7s ease 0s forwards;
-     -moz-animation: bottom .7s ease 0s forwards;
-       -o-animation: bottom .7s ease 0s forwards;
-          animation: bottom .7s ease 0s forwards; }
-
-@media screen and (max-height: 370px) {
-  html:before, html:after {
-    background: none; } }
-@media screen and (max-width: 375px) {
-  html:before, html:after {
-    height: 1rem; } }
 .mrg-auto {
   margin: auto; }
 
@@ -489,3 +442,33 @@ html:after {
      -moz-animation: flash .5s ease-in 2.4s forwards, opacify .3s ease-in 1.9s forwards;
        -o-animation: flash .5s ease-in 2.4s forwards, opacify .3s ease-in 1.9s forwards;
           animation: flash .5s ease-in 2.4s forwards, opacify .3s ease-in 1.9s forwards; }
+
+html:before, html:after {
+  z-index: 10;
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2rem;
+  background: #000; }
+
+html:before {
+  top: -3rem;
+  -webkit-animation: top .7s ease 0s forwards;
+     -moz-animation: top .7s ease 0s forwards;
+       -o-animation: top .7s ease 0s forwards;
+          animation: top .7s ease 0s forwards; }
+
+html:after {
+  bottom: -3rem;
+  -webkit-animation: bottom .7s ease 0s forwards;
+     -moz-animation: bottom .7s ease 0s forwards;
+       -o-animation: bottom .7s ease 0s forwards;
+          animation: bottom .7s ease 0s forwards; }
+
+@media screen and (max-height: 370px) {
+  html:before, html:after {
+    background: none; } }
+@media screen and (max-width: 375px) {
+  html:before, html:after {
+    height: 1rem; } }
